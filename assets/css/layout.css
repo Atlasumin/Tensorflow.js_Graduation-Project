@@ -1,0 +1,26 @@
+* {
+    list-style: none;
+    border: 0;
+    padding: 0;
+    margin: 0
+}
+.zhengti {
+    width: 100%;
+    height: 100%;
+    //background: red;
+    display: flex;
+    margin: auto;
+    padding: 0 10px;
+    align-items: center;
+}
+.pingjun{
+    //background: green;
+    height: 400px;
+    width: 550px;
+    display: inline-block;
+    margin: 10px;
+    line-height: 100px;
+    text-align: center;
+    flex: auto;
+    vertical-align:middle;
+}

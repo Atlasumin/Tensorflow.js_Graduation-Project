@@ -1,0 +1,245 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/input.css" />
+		<link rel="stylesheet" href="assets/css/layout.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="https://unpkg.com/ml5@latest/dist/ml5.min.js" type="text/javascript"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!--		 <script src="assets/js/tongue.js"></script>-->
+		<script src="assets/js/imagenet_classes.js"></script> 
+
+	</head>
+
+	<body class="is-preload">
+
+		<div id="wrapper">
+
+			<nav id="nav">
+				<a href="#garbage" class="icon solid fa-trash"><span>垃圾分类</span></a>
+				<a href="#ps" class="icon solid fa-user"><span>人像抠图</span></a>
+				<a href="#shetou" class="icon solid fa-plus-square"><span>看舌诊断</span></a>
+			</nav>
+
+			<div id="main">
+
+				<!-- 垃圾分类demo -->
+				<div id="garbage" class="panel">
+					<div class="zhengti">
+						<!--上传垃圾图片的框-->
+						<div id="garbage-upload" class="pingjun">
+							<div class="kuang">
+								<div class="addhao">
+									<input type="file" name="" class="fileinput">
+								</div>
+								<div class="on">
+									<div class="xian"></div>
+									<div class="chahao"></div>
+								</div>
+							</div>
+						</div>
+
+						<!--按钮-->
+						<div id="garbage-button" class="pingjun">
+							<button style="background:#3bb4f2;border-radius: 15px;box-shadow: 5px 5px 5px #C0C0C0;margin:0 auto;margin-top: 180px;" onclick="garbage()">Click to Know</button>
+						</div>
+
+						<!--显示识别后的垃圾为什么种类的垃圾,标准按照杭州市垃圾分类标准来执行-->
+						<div id="garbage-result" class="pingjun" style="font-family:myFirstFont;border: 1px solid;box-shadow: 10px 10px 5px #888888;">
+							<!--显示识别出来的是什么东西（文字）-->
+							<div id="garbage-return-0">
+								<a id="garbage-return-1"></a>
+							</div>
+							<!--显示属于什么垃圾（文字）-->
+							<div id="garbage-class"></div>
+							<!--显示该分类的垃圾的图标（图片）-->
+							<div id="garbage-logo">
+								<img id='garbage_img' src="">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 智能修图demo -->
+				<div id="ps" class="panel">
+					<div class="zhengti">
+						<!--上传照片的框-->
+						<div id="ps-uploadjpg" class="pingjun">
+							<div class="kuang">
+								<div class="addhao">
+									<input type="file" name="" class="fileinput">
+								</div>
+								<div class="on">
+									<div class="xian"></div>
+									<div class="chahao"></div>
+									<img src="" id='img' />
+								</div>
+							</div>
+						</div>
+
+						<!--按钮-->
+						<div id="ps-button" class="pingjun">
+							<button style="background:#3bb4f2;border-radius: 15px;box-shadow: 5px 5px 5px #C0C0C0;margin:0 auto;margin-top: 180px;" onclick="Psng()">Clike to PS</button>
+						</div>
+
+						<!--抠图后的图片显示框-->
+						<div id="ps-downloadpng" class="pingjun">
+							<div class="kuang">
+								<div class="on" id="mengban1">
+									<div class="xian"></div>
+									<a href="javascript:void(0);" onclick="js_method()">
+										<img src="assets/css/img/down (2).png" id="down" style="width: 20px;border-radius: 50%;z-index: 10;left: 200px;top: 300px;border: 1px solid whitesmoke;" />
+										<!--style="display: none;"-->
+									</a><img id="img2" src="" width="200px" style="line-height: 300px;" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 舌头识别demo -->
+				<div id="shetou" class="panel">
+					<div class="zhengti">
+						<div id="shetou-upload" class="pingjun">
+							<!--上传舌头图片的框-->
+							<div class="kuang">
+								<div class="addhao">
+									<input type="file" name="" class="fileinput">
+								</div>
+								<div class="on">
+									<div class="xian"></div>
+									<div class="chahao"></div>
+								</div>
+							</div>
+						</div>
+
+						<!--按钮-->
+						<div id="shetou-button" class="pingjun">
+							<button style="background:#3bb4f2;border-radius: 15px;box-shadow: 5px 5px 5px #C0C0C0;margin:0 auto;margin-top: 180px;" onclick="predict_tongue()">看看舌头</button>
+						</div>
+
+						<!--对舌头的基本判断情况的文本框-->
+						<div id="shetou-" class="pingjun">
+							<!--分析后反馈的文本的部分-->
+							<div id="shetou-fenxi" style="border: 1px solid;display: none;box-shadow: 10px 10px 5px #888888;font-family:myFirstFont;">
+								<div style="color: orange;font-weight: 900;">你的身体状况：</div>
+								<div id="tongue_result"></div>
+								<div id="tongue_suggest1" style="color: orangered;font-weight: 900;font-family:myFirstFont;">建议</div>
+								<div id="tongue_suggest"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Footer -->
+			<div id="footer">
+				<ul class="copyright">
+					<li>Atlas Chen</li>
+				</ul>
+			</div>
+
+		</div>
+
+
+
+		<script type="text/javascript">
+			function js_method () {
+				let dataUrl = document.getElementById('img2').src
+				let a = document.createElement('a');
+				a.href = dataUrl;
+				//下载图片
+				a.download = '背景抠除.png';
+				a.click();
+			}
+			function Psng() {
+
+				var newscript = document.createElement('script');
+				newscript.setAttribute('type', 'text/javascript');
+				newscript.setAttribute('src', 'assets/js/sketch.js');
+				var head = document.getElementsByTagName('head')[0];
+				head.appendChild(newscript);
+
+			}
+
+			function garbage() {
+				const img = document.getElementsByTagName('img')[0]
+				var garbages = {
+					"garbage": [{
+						"name": "book",
+						"img": "images/c.png",
+						"brief": "可回收垃圾"
+					}, {
+						"name": "picture",
+						"img": "images/b.png",
+						"brief": "其他垃圾"
+					}, {
+						"name": "banana",
+						"img": "images/a.png",
+						"brief": "厨房垃圾"
+					}, {
+						"name": "candle",
+						"img": "images/a.png",
+						"brief": "厨房垃圾"
+					}, {
+						"name": "screw",
+						"img": "images/d.png",
+						"brief": "有害垃圾"
+					}]
+					//有待填充和完善
+				} ;
+
+				// 使用MobileNet模型识别物品
+				mobilenet.load().then(model => {
+					// Classify the image.
+					model.classify(img).then(predictions => {
+						console.log('Predictions: ');
+						console.log(predictions);
+						let first = predictions[0];
+							console.log(first);
+						console.log(first.className);
+						let len = garbages.garbage.length
+						for(let i = 0; i < len; i++) {
+							if(garbages.garbage[i].name == first.className) {
+								document.getElementById('garbage-return-1').innerHTML = "名称：" + garbages.garbage[i].name
+								document.getElementById('garbage-class').innerHTML = garbages.garbage[i].brief
+								document.getElementById('garbage_img').src = garbages.garbage[i].img
+								break;
+							}
+						}
+					});
+				});
+			}
+			function predict_tongue(){
+				console.log('asdsadsa')
+				console.log(document.getElementById('img').src)
+				console.log('asdsadsa')
+				var newscript = document.createElement('script');
+				newscript.setAttribute('type', 'text/javascript');
+				newscript.setAttribute('src', 'assets/js/tongue.js');
+				var head = document.getElementsByTagName('head')[0];
+				head.appendChild(newscript);
+			}
+		</script>
+		<!-- Scripts -->
+		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.1"></script>
+		<!-- Load the MobileNet model. -->
+		<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0">
+		</script>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="assets/js/upload_pic.js"></script>
+		<!--引黑色背景至此-->
+		<script src="" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>
