@@ -6,9 +6,10 @@
 		$wrapper = $('#wrapper'),
 		$main = $('#main'),
 		$panels = $main.children('.panel'),
-		$nav = $('#nav'), $nav_links = $nav.children('a');
+		$nav = $('#nav'),
+		$nav_links = $nav.children('a');
 
-	// Breakpoints.
+	// Breakpoints.响应式对应的断点
 		breakpoints({
 			xlarge:  [ '1281px',  '1680px' ],
 			large:   [ '981px',   '1280px' ],
@@ -17,42 +18,41 @@
 			xsmall:  [ null,      '360px'  ]
 		});
 
-	// Play initial animations on page load.
+	// 页面加载时播放初始动画
 		$window.on('load', function() {
 			window.setTimeout(function() {
 				$body.removeClass('is-preload');
 			}, 100);
 		});
 
-	// Nav.
+	// Nav导航的控制
 		$nav_links
 			.on('click', function(event) {
 
 				var href = $(this).attr('href');
 
-				// Not a panel link? Bail.
-					if (href.charAt(0) != '#'
-					||	$panels.filter(href).length == 0)
+				// 没有可用链接时直接释放
+					if (href.charAt(0) != '#' || $panels.filter(href).length == 0)
 						return;
 
-				// Prevent default.
+				// 点击到当前页面的标签时不做更改
 					event.preventDefault();
 					event.stopPropagation();
 
-				// Change panels.
+				// 切换到点击的相应标签页面
 					if (window.location.hash != href)
 						window.location.hash = href;
 
 			});
 
-	// Panels.
+	// 页面部分的控制
 
-		// Initialize.
+		// 初始化
 			(function() {
 
 				var $panel, $link;
 
-				// Get panel, link.
+				// 获取页面，链接
 					if (window.location.hash) {
 
 				 		$panel = $panels.filter(window.location.hash);
@@ -60,7 +60,7 @@
 
 					}
 
-				// No panel/link? Default to first.
+				// 没有页面或链接 先初始化
 					if (!$panel
 					||	$panel.length == 0) {
 
@@ -69,16 +69,16 @@
 
 					}
 
-				// Deactivate all panels except this one.
+				// 停用除该页面以外的页面
 					$panels.not($panel)
 						.addClass('inactive')
 						.hide();
 
-				// Activate link.
+				// 激活链接
 					$link
 						.addClass('active');
 
-				// Reset scroll.
+				// 重制滚动
 					$window.scrollTop(0);
 
 			})();
@@ -88,19 +88,20 @@
 
 				var $panel, $link;
 
-				// Get panel, link.
+				// 获取页面，链接
 					if (window.location.hash) {
 
+						//改变当前页面的锚链，在页面内切换位置
 				 		$panel = $panels.filter(window.location.hash);
 						$link = $nav_links.filter('[href="' + window.location.hash + '"]');
 
-						// No target panel? Bail.
+						// 点击的没有对应锚链就释放
 							if ($panel.length == 0)
 								return;
 
 					}
 
-				// No panel/link? Default to first.
+				// 没有页面和链接，先进行初始化。
 					else {
 
 						$panel = $panels.first();
@@ -108,16 +109,16 @@
 
 					}
 
-				// Deactivate all panels.
+				// 停用所有页面
 					$panels.addClass('inactive');
 
-				// Deactivate all links.
+				// 停用所有链接
 					$nav_links.removeClass('active');
 
-				// Activate target link.
+				// 激活目标链接
 					$link.addClass('active');
 
-				// Set max/min height.
+				// 设置最高/最低高度
 					$main
 						.css('max-height', $main.height() + 'px')
 						.css('min-height', $main.height() + 'px');
@@ -125,44 +126,44 @@
 				// Delay.
 					setTimeout(function() {
 
-						// Hide all panels.
+						// 隐藏所有页面
 							$panels.hide();
 
-						// Show target panel.
+						// 显示目标页面
 							$panel.show();
 
-						// Set new max/min height.
+						// 设置新的最大/最小高度
 							$main
 								.css('max-height', $panel.outerHeight() + 'px')
 								.css('min-height', $panel.outerHeight() + 'px');
 
-						// Reset scroll.
+						// 重制滚动
 							$window.scrollTop(0);
 
-						// Delay.
+						// Delay
 							window.setTimeout(function() {
 
-								// Activate target panel.
+								// 激活目标页面
 									$panel.removeClass('inactive');
 
-								// Clear max/min height.
+								// 清理掉最大/最小高度
 									$main
 										.css('max-height', '')
 										.css('min-height', '');
 
-								// IE: Refresh.
+								// IE: 刷新
 									$window.triggerHandler('--refresh');
 
-								// Unlock.
+								// 解锁
 									locked = false;
-
+								// 检测页面大小进行响应式变化
 							}, (breakpoints.active('small') ? 0 : 500));
 
 					}, 250);
 
 			});
 
-	// IE: Fixes.
+	// 兼容IE，直接固定参数。
 		if (browser.name == 'ie') {
 
 			// Fix min-height/flexbox.

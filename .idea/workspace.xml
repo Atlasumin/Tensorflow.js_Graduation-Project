@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c6b67bc-a707-4d0f-a026-a77ed77157b2" name="Default Changelist" comment="" />
+    <list default="true" id="5c6b67bc-a707-4d0f-a026-a77ed77157b2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/binggan.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/binggan2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/cat.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/dangao.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/dianchi.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/qingcai.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/xiangjiao-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/tongue.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/tongue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo1.html" beforeDir="false" afterPath="$PROJECT_DIR$/demo1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +30,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1YnECBJjgBBQhyJ8gC9uZddcC6D" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -22,6 +41,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -55,6 +75,11 @@
       <workItem from="1583759313129" duration="5000" />
       <workItem from="1583892969248" duration="3216000" />
       <workItem from="1583910760536" duration="816000" />
+      <workItem from="1583919956095" duration="1324000" />
+      <workItem from="1583921515429" duration="3465000" />
+      <workItem from="1584692974087" duration="1299000" />
+      <workItem from="1585123386397" duration="448000" />
+      <workItem from="1585123865317" duration="13836000" />
     </task>
     <servers />
   </component>
@@ -62,9 +87,9 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="550" y="302" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583677261862">
+    <state x="550" y="302" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585123408091">
       <screen x="0" y="23" width="1920" height="1134" />
     </state>
-    <state x="550" y="302" key="#com.intellij.fileTypes.FileTypeChooser/1920.23.1440.877/0.23.1920.1134@0.23.1920.1134" timestamp="1583677261862" />
+    <state x="550" y="302" key="#com.intellij.fileTypes.FileTypeChooser/1920.23.1440.877/0.23.1920.1134@0.23.1920.1134" timestamp="1585123408091" />
   </component>
 </project>

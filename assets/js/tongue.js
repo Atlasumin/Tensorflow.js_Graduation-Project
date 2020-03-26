@@ -4,10 +4,9 @@ async function predict_tongue(){
     console.log('a');
     model = undefined;
     console.log("Model loading...");
+        //加载模型
         modelName = "mobilenet";
-        console.log('1')
         model = await tf.loadLayersModel('model/model.json');
-        console.log('2')
     console.log("Model is ready!");
 
     console.log("Try to predict!");
@@ -66,6 +65,7 @@ document.getElementById('tongue_suggest1').innerHTML = "建议:"
 
 function preprocessImage(image, modelName) {
     //console.log("preprocessImage start！");
+    //图片预处理
     let tensor = tf.browser.fromPixels(image)
         .resizeNearestNeighbor([224, 224])
         .toFloat();
